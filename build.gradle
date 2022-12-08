@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven {
+            url "https://www.cursemaven.com"
+        }
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/maven'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.wynprice.cursemaven:CurseMaven:2.1.5'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.wynprice.cursemaven'
+
+version = "1.12.2-1.0"
+group = "com.smokeythebandicoot"
+archivesBaseName = "thaumcraftaspectcreator"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    mappings = "stable_39"
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    maven { url = "http://dvs1.progwml6.com/files/maven" }
+    maven { url = "https://minecraft.curseforge.com/api/maven" }
+    maven { url "https://maven.mcmoddev.com/" }
+    maven { url "https://repo.spongepowered.org/maven" }
+    maven {
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        url "https://www.cursemaven.com"
+    }
+}
+
+configurations {
+    shade
+    compile.extendsFrom shade
+}
+
+dependencies {
+    // deobfProvided "mezz.jei:jei_1.12.2:4.16.1.302"
+    deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
+    implementation 'org.jetbrains:annotations:20.1.0'
+
+    processResources {
+        inputs.property "version", project.version
+        inputs.property "mcversion", project.minecraft.version
+        from(sourceSets.main.resources.srcDirs) {
+            include 'mcmod.info'
+            expand 'version': project.version, 'mcversion': project.minecraft.version
+        }
+        from(sourceSets.main.resources.srcDirs) {
+            exclude 'mcmod.info'
+        }
+    }
+}
