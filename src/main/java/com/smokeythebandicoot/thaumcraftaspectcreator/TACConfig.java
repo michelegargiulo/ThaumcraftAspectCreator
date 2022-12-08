@@ -23,7 +23,7 @@ public class TACConfig {
             "tempestas;0xAABBCC;aqua;ventus",
             "Download icons in Thaumcraft style at https://game-icons.net/",
             "Download them with white foreground and transparent background. Save as png and put it into your ",
-            "<minecraft instance folder>/resources/assets/thaumcraftaspectcreator/textures/<name>.png",
+            "<minecraft instance folder>/resources/thaumcraftaspectcreator/textures/<name>.png",
             "For the Tempestas aspect, it would be placed into <minecraft instance folder>/resources/thaumcraftaspectcreator/tempestas.png",
             "Localize the aspect short description using the unlocalized string tc.aspect.<name>",
             "(for example, add to en_us.lang the string \"tc.aspect.tempestas=Storm, Turbolence\"",
