@@ -20,7 +20,7 @@ public class TACMod
 {
     public static final String MODID = "thaumcraftaspectcreator";
     public static final String NAME = "Thaumcraft Aspect Creator";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1";
     public static final String DEPENDENCIES = "required-after:thaumcraft@[6.1.BETA26,);";
 
     public static Logger logger;
@@ -29,11 +29,7 @@ public class TACMod
     public void preInit(FMLPreInitializationEvent event)
     {
         logger = event.getModLog();
-    }
 
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
         // Initialization for Thaumcraft Aspect Creator
         logger.info("Initializing Thaumcraft Aspect Creator: the mod to add your custom Thaumcraft Aspects for your modpack!");
 
@@ -50,6 +46,12 @@ public class TACMod
 
         // Parse and register the new Aspect
         AspectParser.parse(aspects);
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+
 
     }
 }
